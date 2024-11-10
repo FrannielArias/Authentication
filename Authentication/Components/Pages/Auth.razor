@@ -1,0 +1,23 @@
+﻿@page "/auth"
+
+@using Microsoft.AspNetCore.Authorization
+
+@attribute [Authorize(Roles = "Admin, Usuario")]
+
+<PageTitle>Auth</PageTitle>
+
+<h1>You are authenticated</h1>
+
+<AuthorizeView>
+    Hello @context.User.Identity?.Name!
+</AuthorizeView>
+
+<AuthorizeView Roles="Admin">
+    <h4>¡Bienvenido!</h4>
+    <p>Has iniciado sesión como administrador. Tienes acceso completo a las herramientas y configuraciones avanzadas del sistema.</p>
+</AuthorizeView>
+
+<AuthorizeView Roles="Usuario">
+    <h4>¡Bienvenido!</h4>
+    <p>Bienvenido al sistema. Disfruta de las funcionalidades disponibles para los usuarios.</p>
+</AuthorizeView>
